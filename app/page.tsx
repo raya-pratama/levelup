@@ -521,9 +521,9 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
                 {isRegister ? 'Register Hunter' : 'Awaken'}
               </button>
             </form>
-            <button onClick={() => setIsRegister(!isRegister)} className="w-full mt-6 text-[10px] text-slate-600 hover:text-cyan-500 uppercase font-black tracking-[0.2em]">
+            {/* <button onClick={() => setIsRegister(!isRegister)} className="w-full mt-6 text-[10px] text-slate-600 hover:text-cyan-500 uppercase font-black tracking-[0.2em]">
               {isRegister ? 'Back to Login' : 'Create New Identity'}
-            </button>
+            </button> */}
           </div>
         </div>
       )}
