@@ -239,24 +239,24 @@ const saveInventorysItem = async () => {
   // 2. Logika Quest Default (Olahraga/Meditasi)
   // Jika belum ada quest harian untuk hari ini, kita bisa menambahkannya secara otomatis
   // Tambahkan baris ini di dalam fungsi fetchQuests
-  const today = new Date().toISOString().split('T')[0];
-  const dailyTodayExists = userQuests?.some(q => 
-    q.is_daily === true && 
-    new Date(q.created_at).toISOString().split('T')[0] === today
-  );
+  // const today = new Date().toISOString().split('T')[0];
+  // const dailyTodayExists = userQuests?.some(q => 
+  //   q.is_daily === true && 
+  //   new Date(q.created_at).toISOString().split('T')[0] === today
+  // );
   
-  if (!dailyTodayExists) {
-    const { data: newDaily } = await supabase.from('quests').insert([
-      { 
-        user_id: user.id, 
-        title: "Olahraga/Meditasi - 5M", 
-        description: "Olahraga atau Meditasi minimal 5 menit.", 
-        difficulty: "normal", 
-        is_daily: true 
-      }
-    ]).select();
-    if (newDaily) userQuests = [newDaily[0], ...(userQuests || [])];
-  }
+  // if (!dailyTodayExists) {
+  //   const { data: newDaily } = await supabase.from('quests').insert([
+  //     { 
+  //       user_id: user.id, 
+  //       title: "Olahraga/Meditasi - 5M", 
+  //       description: "Olahraga atau Meditasi minimal 5 menit.", 
+  //       difficulty: "normal", 
+  //       is_daily: true 
+  //     }
+  //   ]).select();
+  //   if (newDaily) userQuests = [newDaily[0], ...(userQuests || [])];
+  // }
 
   setQuests(userQuests || []);
   };
@@ -687,7 +687,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
               </p>
             </div>
             <div className="text-right">
-              <p className="text-[9px] text-slate-500 font-black uppercase tracking-widest mb-1">Current Gold</p>
+              <p className="text-[9px] text-slate-500 font-black uppercase tracking-widest mb-1">Total Gold</p>
               <p className="text-2xl text-amber-500 font-black italic">
                 {Number(profile?.gold).toLocaleString()} <span className="text-xs font-normal not-italic text-slate-500 ml-1">G</span>
               </p>
@@ -760,12 +760,12 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
       </p>
     </div>
       <button onClick={() => setIsAddingQuest(true)} className="text-[10px] font-black text-cyan-400 border border-cyan-500/30 px-6 py-2 hover:bg-cyan-500/10 transition-all shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-        [ + NEW QUEST ]
+        NEW QUEST
       </button>
     </div>
 
     {/* GRID LIST (Dipotong berdasarkan halaman) */}
-    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 min-h-[400px]">
+    <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 min-h-[400px]">
       {quests
         .slice((currentPage - 1) * questsPerPage, currentPage * questsPerPage)
         .map((quest) => (
@@ -900,7 +900,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
             </div>
             <button 
               onClick={() => addCustomQuest(newQuestTitle, newQuestDifficulty)}
-              className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-black py-2 mt-2 uppercase tracking-[0.3em] text-xs transition-all shadow-[0_5px_20px_rgba(6,182,212,0.3)]"
+              className="text-[10px] font-black text-cyan-400 border border-cyan-500/30 px-6 py-2 hover:bg-cyan-500/10 transition-all shadow-[0_0_15px_rgba(6,182,212,0.1)]"
             >
               Add Quest
             </button>
@@ -962,9 +962,9 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
     </div>
       <button 
         onClick={() => setIsAddingItem(true)}
-        className="bg-cyan-600 hover:bg-cyan-500 text-black px-4 py-2 text-[10px] font-black uppercase tracking-tighter transition-all"
+        className="text-[10px] font-black text-cyan-400 border border-cyan-500/30 px-6 py-2 hover:bg-cyan-500/10 transition-all shadow-[0_0_15px_rgba(6,182,212,0.1)]"
       >
-        + Add New Item
+        New Item
       </button>
     </div>
     {/* Modal Add Item */}
@@ -1087,11 +1087,11 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
   </div>
 )}
     {/* GRID INVENTORY */}
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 rounded md:grid-cols-3 lg:grid-cols-4 gap-4">
       {currentItems.map((item) => (
-        <div key={item.id} onClick={() => setSelectedItem(item)} className="bg-slate-950/40 border border-slate-800 p-1 group hover:border-cyan-500/50 transition-all relative overflow-hidden">
+        <div key={item.id} onClick={() => setSelectedItem(item)} className="bg-slate-950/40 rounded border border-slate-800 p-1 group hover:border-cyan-500/50 transition-all relative overflow-hidden">
           {/* Gambar Produk */}
-          <div className="aspect-[4/3] bg-black/40 overflow-hidden relative">
+          <div className="aspect-[4/3] bg-black/40 overflow-hidden rounded relative">
             <img 
               src={item.image_url || 'https://via.placeholder.com/300'} 
               alt={item.name}
@@ -1155,13 +1155,13 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
       
       {/* HEADER SETTINGS */}
       <div className="border-l-2 border-cyan-500 pl-4">
-        <h3 className="text-white font-black italic uppercase tracking-[0.3em] text-sm">System Configuration</h3>
-        <p className="text-[10px] text-slate-500 uppercase mt-1">Modify your hunter identity and appearance</p>
+        <h3 className="text-white font-black italic uppercase tracking-[0.3em] text-sm">System Settings</h3>
+        <p className="text-[10px] text-slate-500 uppercase mt-1">Modify your identity and appearance</p>
       </div>
 
       {/* SECTION 1: PHOTO PROFILE */}
       <div className="space-y-6">
-        <label className="text-[9px] text-slate-500 font-black uppercase tracking-[0.2em] block">Hunter Image</label>
+        <label className="text-[9px] text-slate-500 font-black uppercase tracking-[0.2em] block">User Image</label>
         <div className="flex flex-col md:flex-row items-center gap-8">
           {/* Avatar Preview */}
           <div className="relative group">
@@ -1194,9 +1194,9 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
           </div>
 
           <div className="flex-1 space-y-2 text-center md:text-left">
-            <p className="text-white font-bold text-xs uppercase tracking-widest">Upload Custom Avatar</p>
+            <p className="text-white font-bold text-xs uppercase tracking-widest">Upload Custom Photo</p>
             <p className="text-[10px] text-slate-500 italic leading-relaxed max-w-xs">
-              Recommended: Square image (1:1), max 2MB. Your avatar will be visible to other hunters in the network.
+              Recommended: Square image (1:1), max 2MB. Your photo will be visible to other users in the network.
             </p>
             <label className="inline-block mt-4 cursor-pointer bg-slate-900 hover:bg-slate-800 border border-slate-800 px-6 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest text-slate-300 transition-all">
               {uploading ? 'Processing...' : 'Select File'}
@@ -1226,9 +1226,9 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
       <div className="space-y-4">
         <label className="text-[9px] text-cyan-500 font-black uppercase tracking-[0.2em] block">Player Role / Class</label>
         <input 
-          type="text" 
-          value={newRole} 
+          type="text"  
           placeholder="Masukkan Role/Pekerjaan..."
+          defaultValue={profile?.role}
           onChange={(e) => setNewRole(e.target.value)}
           className="w-full bg-black border border-slate-800 rounded-xl p-4 text-sm font-bold text-white outline-none focus:border-cyan-500 transition-all shadow-inner"
         />
