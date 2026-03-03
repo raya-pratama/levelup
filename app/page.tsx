@@ -550,7 +550,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
 
       {/* 3. SIDEBAR */}
       <aside className={`fixed inset-y-0 left-0 z-40 w-72 bg-black border-slate-900 transition-transform duration-300 md:static md:translate-x-0 ${isSideBarOpen ? "translate-x-0" : "-translate-x-full"}`}>
-        <div className="h-full flex flex-col p-8">
+        <div className="h-full flex flex-col p-8 overflow-y-auto no-scrollbar pb-32">
           <div className="w-40 h-40 rounded-full border-4 border-slate-900 overflow-hidden mb-8 bg-slate-900 mx-auto shadow-2xl">
             <img 
             src={profile?.avatar_url || `https://api.dicebear.com/7.x/avataaars/svg?seed=${profile?.username}`} 
@@ -591,7 +591,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
             </div>
           </div>
           <button onClick={handleLogout} className="mt-auto flex items-center gap-2 text-slate-800 hover:text-red-500 text-[9px] font-black uppercase tracking-widest transition-colors">
-            <LogOut size={14} /> Logoff System
+            <LogOut size={14} /> Logout Account
           </button>
         </div>
       </aside>
