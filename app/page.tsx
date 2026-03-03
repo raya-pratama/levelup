@@ -776,6 +776,8 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
               ${quest.is_completed ? 'bg-slate-900/10 border-slate-900 opacity-40' : 'bg-black/40 border-cyan-900/40 hover:border-cyan-500 shadow-lg shadow-cyan-500/5'}
             `}
           >
+            <div className='min-w-[50px] relative overflow-hidden'>
+
             <div className='border border-cyan-500/30 p-6 min-w-[150px] relative overflow-hidden'>
             <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-cyan-400 group-hover:border-cyan-400"></div>
             <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-cyan-400 group-hover:border-cyan-400"></div>
@@ -787,6 +789,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
             <p className="text-[10px] font-black text-yellow-600 uppercase mb-2 mt-1 tracking-widest">Gold : +{DIFFICULTY_REWARDS[quest.difficulty as keyof typeof DIFFICULTY_REWARDS].gold} G</p>
             <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
               <p className="text-[8px] text-cyan-500 font-bold uppercase tracking-widest">VIEW</p>
+            </div>
             </div>
           </div>
           </div>
