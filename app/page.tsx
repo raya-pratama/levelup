@@ -647,14 +647,15 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
 
     {/* Tombol Menu Bulat (Gambar Kedua) - Melayang di atas Bottom Bar */}
     <button
-      onClick={() => setIsSideBarOpen(true)}
+      onClick={() => setIsSideBarOpen(!isSideBarOpen)}
       className="md:hidden fixed bottom-24 right-6 z-[210] w-14 h-14 bg-cyan-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(8,145,178,0.4)] border-2 border-cyan-400/50 active:scale-90 transition-all"
     >
-      <div className="flex flex-col gap-1">
+      {/* <div className="flex flex-col gap-1">
         <div className="w-6 h-0.5 bg-black"></div>
         <div className="w-6 h-0.5 bg-black"></div>
         <div className="w-6 h-0.5 bg-black"></div>
-      </div>
+      </div> */}
+      {isSideBarOpen ? <X size={24} /> : <Menu size={24} />}
     </button>
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             {activeTab === 'Status' && (
@@ -1269,12 +1270,12 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
       </main>
 
       {/* MOBILE TRIGGER */}
-      <button 
+      {/* <button 
         onClick={() => setIsSideBarOpen(!isSideBarOpen)} 
         className="md:hidden fixed bottom-8 right-8 z-50 p-5 bg-cyan-600 text-black rounded-full"
       >
         {isSideBarOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+      </button> */}
       {itemToDelete && (
   <div className="fixed inset-0 z-[500] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-300">
     <div className="bg-slate-950 border-2 border-rose-500/50 p-8 w-full max-w-sm relative overflow-hidden">
