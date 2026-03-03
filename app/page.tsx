@@ -597,7 +597,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
               <span className="text-amber-500 text-[11px]">{Number(profile?.gold || 0).toLocaleString()} G</span>
             </div>
           </div>
-          <button onClick={handleLogout} className="mt-auto pb-16 lg:pb-0 md:pb-16 flex items-center gap-2 text-slate-800 hover:text-red-500 text-[9px] font-black uppercase tracking-widest transition-colors">
+          <button onClick={handleLogout} className="mt-auto mb-20 lg:mb-0 md:mb-0 flex items-center gap-2 text-slate-800 hover:text-red-500 text-[9px] font-black uppercase tracking-widest transition-colors">
             <LogOut size={14} /> Logout Account
           </button>
         </div>
