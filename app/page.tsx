@@ -1087,7 +1087,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
   </div>
 )}
     {/* GRID INVENTORY */}
-    <div className="grid grid-cols-1 rounded md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 rounded md:grid-cols-3 lg:grid-cols-4 gap-4">
       {currentItems.map((item) => (
         <div key={item.id} onClick={() => setSelectedItem(item)} className="bg-slate-950/40 rounded border border-slate-800 p-1 group hover:border-cyan-500/50 transition-all relative overflow-hidden">
           {/* Gambar Produk */}
