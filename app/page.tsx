@@ -597,7 +597,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
               <span className="text-amber-500 text-[11px]">{Number(profile?.gold || 0).toLocaleString()} G</span>
             </div>
           </div>
-          <button onClick={handleLogout} className="mt-auto mb-20 lg:mb-0 md:mb-0 flex items-center gap-2 text-slate-800 hover:text-red-500 text-[9px] font-black uppercase tracking-widest transition-colors">
+          <button onClick={handleLogout} className="mt-auto mb-18 lg:mb-0 md:mb-0 flex items-center gap-2 text-slate-800 hover:text-red-500 text-[9px] font-black uppercase tracking-widest transition-colors">
             <LogOut size={14} /> Logout Account
           </button>
         </div>
@@ -626,7 +626,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
 
     {/* --- TAMPILAN MOBILE BOTTOM BAR (Gambar Ketiga) --- */}
     {profile && (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-[200] bg-slate-950/90 backdrop-blur-lg border-t border-cyan-500/20 px-4 py-3">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-[200] ${!profile ? 'hidden' : 'flex'} bg-slate-950/90 backdrop-blur-lg border-t border-cyan-500/20 px-4 py-3">
       <div className="flex justify-around items-center">
         {[
           { id: 'Status', icon: "📊" },
@@ -668,6 +668,7 @@ const handleCompleteQuest = async (expGain: number, goldGain: number) => {
       {isSideBarOpen ? <X size={24} /> : <Menu size={24} />}
     </button>
     )}
+    
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             {activeTab === 'Status' && (
   <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
